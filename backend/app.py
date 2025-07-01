@@ -10,15 +10,15 @@ from google import genai
 
 load_dotenv()
 
-GEMINI_API_KEY = "AIzaSyB2dRvIsxO8ik8kqExNFlFZIw15qE3TeF0"
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 app = Flask(__name__)
 
 origins = [
-    "http://localhost:5173", 
-    "https://vision-sketch.vercel.app",  
+    "http://localhost:5173",  # Development
+    "https://vision-sketch.vercel.app",  # Production (replace with actual Vercel URL)
 ]
-                                                                                                                                                                                                                                            
+
 CORS(app,origins=origins)
 
 
@@ -32,7 +32,7 @@ def calculate():
     try:
         data = request.get_json()
         image_data = data.get('image')
-        
+
         image_data = image_data.split(",")[1]
         
         image_bytes = base64.b64decode(image_data)
