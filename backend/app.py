@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 origins = [
     "http://localhost:5173",  # Development
-    "https://vision-sketch.vercel.app",  # Production (replace with actual Vercel URL)
+    "https://sketch-semantics.onrender.com",  # Production (replace with actual Vercel URL)
 ]
 
 CORS(app,origins=origins)
